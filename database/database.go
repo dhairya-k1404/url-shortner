@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 	"log"
-	"os"
+	"url-shortner/conf"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -16,11 +16,11 @@ func InitPostgresGORM() {
 
 	dbURL := fmt.Sprintf(
 		"host=%s user=%s password=%s dbname=%s port=%s sslmode=require",
-		os.Getenv("POSTGRES_HOST"),
-		os.Getenv("POSTGRES_USER"),
-		os.Getenv("POSTGRES_PASSWORD"),
-		os.Getenv("POSTGRES_DB"),
-		os.Getenv("POSTGRES_PORT"),
+		conf.POSTGRES_HOST,
+		conf.POSTGRES_USER,
+		conf.POSTGRES_PASSWORD,
+		conf.POSTGRES_DB,
+		conf.POSTGRES_PORT,
 	)
 
 	var err error

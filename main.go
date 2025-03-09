@@ -11,9 +11,7 @@ import (
 func main() {
 
 	// Get the router from the router package
-	database.InitPostgresGORM()
-	migration.AutoMigrate()
-	cache.InitRedis()
+	InitStorage()
 
 	r := router.SetupRouter()
 
@@ -22,4 +20,10 @@ func main() {
 	if err := r.Run(":8080"); err != nil {
 		log.Fatalf("Server failed to start: %v", err)
 	}
+}
+
+func InitStorage() {
+	database.InitPostgresGORM()
+	migration.AutoMigrate()
+	cache.InitRedis()
 }

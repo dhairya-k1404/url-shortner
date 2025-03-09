@@ -3,8 +3,8 @@ package cache
 import (
 	"context"
 	"log"
-	"os"
 	"time"
+	"url-shortner/conf"
 
 	"github.com/go-redis/redis/v8"
 )
@@ -18,7 +18,7 @@ const cacheTTL = 10 * time.Minute
 
 // InitRedis initializes the Redis client.
 func InitRedis() {
-	redisURL := os.Getenv("REDIS_URL")
+	redisURL := conf.REDIS_URL
 	if redisURL == "" {
 		log.Fatal("❌ REDIS_URL is not set")
 	}

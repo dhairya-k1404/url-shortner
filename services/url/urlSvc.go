@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"url-shortner/cache"
+	"url-shortner/conf"
 	urldto "url-shortner/dto/urlDto"
 	"url-shortner/utils"
 
@@ -27,7 +28,7 @@ func ShortenHandler(c *gin.Context) {
 	}
 
 	resp := urldto.URLResponse{
-		ShortURL: fmt.Sprintf("http://localhost:8080/%s", shortCode),
+		ShortURL: fmt.Sprintf("%s%s", conf.BASE_URL, shortCode),
 	}
 	c.JSON(http.StatusOK, resp)
 	return
